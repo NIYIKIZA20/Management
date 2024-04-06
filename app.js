@@ -2,10 +2,12 @@
 const {sequelize, user,company}= require('./models');
 const express = require('express');
 const cors = require('cors');
+const morgan= require('morgan');
 const { where } = require('sequelize');
 const App = express();
 
 App.use(cors());
+App.use(morgan('dev'));
 App.use(express.json());
 
 
