@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": " sequelize db:migrate && nodemon app.js"  
+
   },
   "author": "jean baptiste",
   "license": "ISC",
