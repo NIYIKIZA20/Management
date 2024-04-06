@@ -153,11 +153,13 @@ App.delete('/company/:id', async(req, res)=>{
 //     }
 
 // });
+const port = process.env.PORT|| 3002;
 
-
-App.listen(3002, async()=>{
-    console.log('server running on port 3002...');
-   // await sequelize.sync({force: true});
-    await sequelize.authenticate();
+sequelize.authenticate().then(()=>{ 
     console.log('Database connected');
-});
+    App.listen(port, async()=>{
+        console.log('server running on port 3002...');
+       // await sequelize.sync({force: true});    
+    });
+    
+})
