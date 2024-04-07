@@ -12,7 +12,6 @@ App.use(express.json());
 
 
 App.post('/user', async(req,res)=>{  // user/login
-    console.log(req.body);
     const {name, email, phone,role,age,description,password,companyName}= req.body;
     
 try {
@@ -64,7 +63,6 @@ App.put('/user/:id', async(req,res)=>{
         users.companyName= companyName;
 
         await users.save();
-        console.log(users); 
         return res.json(users);
         
     } catch (err) {
@@ -119,8 +117,7 @@ App.put('/company/:id', async(req, res)=>{
      const users = await company.findOne({where :{id}});
       
      users.compName= compName;
-     await users.save();
-     console.log(users); 
+     await users.save(); 
      return res.json(users);
 
     } catch (err) {
@@ -143,18 +140,6 @@ App.delete('/company/:id', async(req, res)=>{
     }
 });
 
-// App.delete('/users/:name', async(req,res)=>{
-
-//     const name= 
-//     try {
-        
-//     } catch (err) {
-//         console.error.message;
-//         res.status(400).json(err);
-        
-//     }
-
-// });
 const port = process.env.PORT|| 3002;
 
 sequelize.authenticate().then(()=>{ 
